@@ -38,21 +38,18 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Ofertas', 'url' => ['/site/ofertas']],
+            ['label' => 'Productos', 'url' => ['/site/productos']],
+            ['label' => 'Categorías', 'url' => ['/site/categorias']],
+            ['label' => 'Nosotros', 'items' => [
+                    ['label' => 'Donde Estamos', 'url' => ['/site/dondeestamos']],
+                    ['label' => 'Quienes Somos', 'url' => ['/site/quienessomos']],
+                    ['label' => 'Nuestros productos', 'url' => ['/site/nuestrosproductos']],
+                    '<li class="divider"></li>',
+                    ['label' => 'Informacion', 'url' => ['/site/informacion']],
+            ]],
+            ['label' => 'Contacto', 'url' => ['/site/contacto']],
         ],
     ]);
     NavBar::end();
@@ -69,7 +66,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Oscar Megía López 2020</p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
