@@ -37,19 +37,20 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
+        'encodeLabels' => false,
         'items' => [
-            ['label' => 'Inicio', 'url' => ['/site/index']],
-            ['label' => 'Ofertas', 'url' => ['/site/ofertas']],
-            ['label' => 'Productos', 'url' => ['/site/productos']],
-            ['label' => 'Categorías', 'url' => ['/site/categorias']],
-            ['label' => 'Nosotros', 'items' => [
+            ['label' => '<span class="glyphicon glyphicon-home"></span>&nbsp;Inicio', 'url' => ['/site/index']],
+            ['label' => '<span class="glyphicon glyphicon-ok"></span>&nbsp;Ofertas', 'url' => ['/site/ofertas']],
+            ['label' => '<span class="glyphicon glyphicon-th"></span>&nbsp;Productos', 'url' => ['/site/productos']],
+            ['label' => '<span class="glyphicon glyphicon-list"></span>&nbsp;Categorías', 'url' => ['/site/categorias']],
+            ['label' => '<span class="glyphicon glyphicon-info-sign"></span>&nbsp;Nosotros', 'items' => [
                     ['label' => 'Donde Estamos', 'url' => ['/site/dondeestamos']],
                     ['label' => 'Quienes Somos', 'url' => ['/site/quienessomos']],
                     ['label' => 'Nuestros productos', 'url' => ['/site/nuestrosproductos']],
                     '<li class="divider"></li>',
                     ['label' => 'Informacion', 'url' => ['/site/informacion']],
             ]],
-            ['label' => 'Contacto', 'url' => ['/site/contacto']],
+            ['label' => '<span class="glyphicon glyphicon-user"></span>&nbsp;Contacto', 'url' => ['/site/contacto']],
         ],
     ]);
     NavBar::end();
