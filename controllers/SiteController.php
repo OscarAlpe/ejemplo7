@@ -52,4 +52,33 @@ class SiteController extends Controller
         ]);
     }
     
+    public function actionInformacion() {
+        $model = new \app\models\ContactForm();
+        if ($model->load(Yii::$app->request->post())
+                &&
+            $model->contact(Yii::$app->params["informacion"])) {
+            
+            Yii::$app->session->setFlash('enviadaInformacion');
+            
+            return $this->refresh();
+        }
+        
+        return $this->render("informacion",[
+            "model" => $model,
+        ]);
+    }
+    
+    /**
+     * 
+     * Prueba de envio de correo electronico. No está en el menú.
+     * 
+     */
+    public function actionCorreo() {
+        $correo = new \app\models\ContactForm();
+        $correo->asunto = "Probando este rollo";
+        $correo->contenido = "El contenido del correo";
+        $correo->correo = "cliente@correo.es";
+        $correo->nombre = "Cliente";
+        $correo->contact(Yii::$app->params["informacion"]);
+    }
 }
