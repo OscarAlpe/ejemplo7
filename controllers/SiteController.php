@@ -7,6 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
+use app\models\Productos;
 
 class SiteController extends Controller
 {
@@ -36,4 +38,18 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionOfertas() {
+        $query = Productos::find()->select("id, nombre, foto, descripcion")->where(["=", "oferta", "1"]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 2,
+            ],
+        ]);
+
+        return $this->render('ofertas',[
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
 }
