@@ -4,6 +4,6 @@
 <div class="row">
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemView' => '_ofertas'
+        'itemView' => '_productos'
     ]); ?>
 </div>

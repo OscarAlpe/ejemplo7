@@ -47,7 +47,7 @@ class SiteController extends Controller
             ],
         ]);
 
-        return $this->render('ofertas',[
+        return $this->render('productos',[
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -97,4 +97,17 @@ class SiteController extends Controller
         ]);
     }
     
+    public function actionProductos() {
+        $query = Productos::find()->select("id, nombre, foto, descripcion");
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 2,
+            ],
+        ]);
+
+        return $this->render('productos',[
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }
