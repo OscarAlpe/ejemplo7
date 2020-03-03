@@ -81,4 +81,20 @@ class SiteController extends Controller
         $correo->nombre = "Cliente";
         $correo->contact(Yii::$app->params["informacion"]);
     }
+    
+    public function actionContacto() {
+        $model = new \app\models\FormularioContacto();
+        if ($model->load(Yii::$app->request->post()) 
+                &&
+            $model->contact(Yii::$app->params["contacto"])) {
+            Yii::$app->session->setFlash('enviadoContacto');
+            
+            return $this->refresh();
+        }
+        
+        return $this->render("contacto", [
+            "model" => $model,
+        ]);
+    }
+    
 }
