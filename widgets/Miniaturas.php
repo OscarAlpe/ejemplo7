@@ -17,7 +17,7 @@ class Miniaturas extends Widget {
     
     public function run() {
         $retorno = '<div class="thumbnail">';
-        $retorno .= '<div style="text-align: center; margin-top: 5%;">';
+        $retorno .= '<div style="margin: 5%; height: 250px; width: 250px; display: block;">';
         $retorno .= Html::img('@web/imgs/' . $this->foto, ['width' => '400px']);
         $retorno .= '</div>';
         $retorno .= '<div class="caption">';
