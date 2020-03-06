@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\data\ActiveDataProvider;
 use app\models\Productos;
+use app\models\Categorias;
 
 class SiteController extends Controller
 {
@@ -109,5 +110,38 @@ class SiteController extends Controller
         return $this->render('productos',[
             'dataProvider' => $dataProvider,
         ]);
+    }
+    
+    public function actionCategorias() {
+        $query = Categorias::find()->select("id, nombre, foto, descripcion");
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 2,
+            ],
+        ]);
+
+        return $this->render('categorias',[
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionDetallecategoria($id) {
+        $model = new Categorias();
+        $model = Categorias::find()->select('categorias.*')->where(['id' => $id])->one();
+
+        $query = Productos::find()
+                 ->joinWith("relacions",false,"INNER JOIN")
+                 ->where("categoria=$id");
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+        
+        return $this->render("detalle_categoria",[
+            'model' => $model,
+            'dataProvider' => $dataProvider,
+        ]);
+
     }
 }
