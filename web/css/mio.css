@@ -1,4 +1,9 @@
-.fotoDetalle {
+.fotoDetalleDetailView {
     height: 400px;
     width: auto;
+}
+
+.fotoDetalleGridView {
+    height: 100px;
+    width: auto;   
 }

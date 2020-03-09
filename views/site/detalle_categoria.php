@@ -14,7 +14,7 @@ use yii\helpers\Html;
             'label' => 'foto',
             'format' => 'raw',
             'value' => Html::img("@web/imgs/" . $model->foto, [
-                'class' => 'fotoDetalle',
+                'class' => 'fotoDetalleDetailView',
             ]),
             'contentOptions' => ['style' => 'text-align: center;']
         ]
@@ -23,4 +23,19 @@ use yii\helpers\Html;
 
 <?= GridView::widget([
     'dataProvider' => $dataProvider,
+    'columns' => [
+        'id',
+        'nombre',
+        'descripcion',
+        [
+            'label' => 'Foto',
+            'format' => 'raw',
+            'value' => function($data) {
+                        return Html::img("@web/imgs/" . $data->foto, [
+                            'class' => 'fotoDetalleGridView',
+                        ]);
+                    },
+            'contentOptions' => ['style' => 'text-align: center;']
+        ]
+    ]
 ]) ?>
