@@ -13,7 +13,7 @@ use yii\helpers\Html;
             'attribute' => 'foto',
             'label' => 'foto',
             'content' => function($data) {
-                return Html::a(Html::img('@web/imgs/' . $data["foto"], ['width' => '400px']), ['site/detallecategoria','id'=>$data->id]);
+                return Html::a(Html::img('@web/imgs/' . $data["foto"], ['width' => '400px']), [], ['site/detallecategoria','id'=>$data->id]);
             }
         ],
      ]
